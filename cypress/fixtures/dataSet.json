@@ -1,0 +1,17 @@
+{
+  "productos": {
+    "primerProducto": {
+      "name": "Zapatillas Azules",
+      "precioUnitario": "30.33",
+      "quantity": ""
+    },
+    "segundoProducto": {
+      "name": "Jean Azul",
+      "precioUnitario": "11.98",
+      "quantity": ""
+    }
+  },
+  "pageNames": {
+    "onlineShop": "Online shop"
+  }
+}
