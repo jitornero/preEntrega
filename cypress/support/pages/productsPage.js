@@ -1,7 +1,7 @@
 export class AgregarProducto {
 
     constructor(){
-        this.zapatillasAzules = ""
+        
     }
 
 

@@ -1,6 +1,4 @@
 
-
-
 export class OnlineShopPage {
     constructor(){
 
