@@ -1,10 +1,14 @@
 
-import { LoginPage } from "../support/pages/loginPage"
-import { onlineShopPage } from "../support/pages/onlineShopPage"
 
+import { LoginPage } from "../support/pages/loginPage"
+import { OnlineShopPage } from "../support/pages/onlineShopPage"
+import { AgregarProducto } from "../support/pages/productsPage";
 
 describe('pre-entrega', () => {
   const loginPage = new LoginPage();
+  const onlineShop = new OnlineShopPage();
+  const agregarProducto = new AgregarProducto();
+
   let dataSet;
   let subTotal1;
   let subTotal2;
@@ -25,27 +29,18 @@ describe('pre-entrega', () => {
   })
 
   it('onlineShop', () => {
+    onlineShop.clickOnlineShop();
+    onlineShop.verificaOnlineShop(dataSet.pageNames.onlineShop);
 
-    cy.get('#onlineshoplink', {setTimeout:10000}).click();
-    cy.contains('h2', dataSet.pageNames.onlineShop, { setTimeout: 10000 });
+    agregarProducto.agregarProducto(dataSet.productos.primerProducto, dataSet.productos.primerProducto);
+    agregarProducto.agregarProducto(dataSet.productos.primerProducto, dataSet.productos.primerProducto);
+    agregarProducto.agregarProducto(dataSet.productos.segundoProducto, dataSet.productos.segundoProducto);
 
-    cy.contains('p', dataSet.productos.primerProducto.name).siblings('div').find('button[id^="add-to-cart"]', { setTimeout: 6000 }).click({force: true}).then(()=>{
-      dataSet.productos.primerProducto.quantity++;
-      console.log(dataSet.productos.primerProducto.quantity)})
-    cy.contains('p', `${dataSet.productos.primerProducto.name} has been added to the shopping cart`, { setTimeout: 6000 });
-    cy.get('#closeModal').click();
-
-    cy.contains('p', dataSet.productos.primerProducto.name).siblings('div').find('button[id^="add-to-cart"]', { setTimeout: 6000 }).click().then(()=>{
-      dataSet.productos.primerProducto.quantity++;
-      console.log(dataSet.productos.primerProducto.quantity)});
-    cy.contains('p', `${dataSet.productos.primerProducto.name} has been added to the shopping cart`, { setTimeout: 6000 });
-    cy.get('#closeModal').click();
-
-    cy.contains('p', dataSet.productos.segundoProducto.name).siblings('div').find('button[id^="add-to-cart"]', { setTimeout: 6000 }).click().then(()=>{
-      dataSet.productos.segundoProducto.quantity++;
-      console.log(dataSet.productos.segundoProducto.quantity)});
-    cy.contains('p', `${dataSet.productos.segundoProducto.name} has been added to the shopping cart`, { setTimeout: 6000 });
-    cy.get('#closeModal').click();
+    // cy.contains('p', dataSet.productos.segundoProducto.name).siblings('div').find('button[id^="add-to-cart"]', { setTimeout: 6000 }).click().then(()=>{
+    //   dataSet.productos.segundoProducto.quantity++;
+    //   console.log(dataSet.productos.segundoProducto.quantity)});
+    // cy.contains('p', `${dataSet.productos.segundoProducto.name} has been added to the shopping cart`, { setTimeout: 6000 });
+    // cy.get('#closeModal').click();
 
 
 
