@@ -19,6 +19,7 @@ describe('pre-entrega', () => {
 
   beforeEach('', () => {
     cy.visit('/');
+    
     loginPage.login();
 
   })
